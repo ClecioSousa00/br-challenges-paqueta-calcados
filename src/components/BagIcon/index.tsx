@@ -4,7 +4,6 @@ import { LuShoppingBag } from 'react-icons/lu'
 
 export const BagIcon = () => {
   const { value } = useLocalStorage('itemsBag')
-  console.log(value)
 
   return (
     <>

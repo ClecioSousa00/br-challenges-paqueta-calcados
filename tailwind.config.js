@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         gradientBar: 'linear-gradient(174deg, #FF8A29 0%, #CF5D00 100%)',
+        heroBackground: "url('/banner-hero.png')",
       },
       fontFamily: {
         sans: ['var(--font-poppins)'],

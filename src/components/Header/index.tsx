@@ -1,10 +1,11 @@
+import { BarHeader } from '@/components/BarHeader'
 import Image from 'next/image'
-import { BarHeader } from '../BarHeader'
 import logoPaqueta from '@/assets/logos/logo (1).png'
-import { ContainerIcons } from '../ContainerIcons'
-import { FavoritesIcon } from '../FavoritesIcon'
-import { BagIcon } from '../BagIcon'
-import { UserIcon } from '../UserIcon'
+import { ContainerIcons } from '@/components/ContainerIcons'
+import { FavoritesIcon } from '@/components/FavoritesIcon'
+import { BagIcon } from '@/components/BagIcon'
+import { UserIcon } from '@/components/UserIcon'
+import { NavBar } from '@/components/NavBar'
 
 export const Header = () => {
   return (
@@ -24,6 +25,7 @@ export const Header = () => {
           </ContainerIcons>
         </div>
       </div>
+      <NavBar />
     </header>
   )
 }
