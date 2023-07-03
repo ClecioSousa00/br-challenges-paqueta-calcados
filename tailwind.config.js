@@ -9,6 +9,11 @@ module.exports = {
     extend: {
       backgroundImage: {
         gradientBar: 'linear-gradient(174deg, #FF8A29 0%, #CF5D00 100%)',
+        gradientImage:
+          ' linear-gradient(90deg, #F57002 0%, rgba(245, 112, 2, 0.00) 100%)',
+        gradientImageInvert:
+          ' linear-gradient(-90deg, #F57002 0%, rgba(245, 112, 2, 0.00) 100%)',
+
         heroBackground: "url('/banner-hero.png')",
       },
       fontFamily: {

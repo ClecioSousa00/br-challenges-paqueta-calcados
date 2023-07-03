@@ -19,14 +19,19 @@ export const FootwearSection = ({
         text === 'masculino' ? 'flex-row-reverse' : ''
       }`}
     >
-      <div className="relative w-[420px]">
+      <div
+        className={`relative w-[420px] rounded after:absolute after:inset-0 
+        after:bg-gradientImage after:content-[''] ${
+          text === 'masculino' ? 'after:bg-gradientImageInvert' : ''
+        }`}
+      >
         <Image
           className="h-full w-full"
           src={img}
           alt="Pessoa usando sapato do Paquetá calçados"
         />
         <p
-          className={`absolute bottom-8 max-w-[270px] text-3xl uppercase ${
+          className={`absolute bottom-8 z-10 max-w-[270px] text-3xl uppercase ${
             text === 'masculino' ? 'right-7 text-right' : 'left-7  '
           }`}
         >
