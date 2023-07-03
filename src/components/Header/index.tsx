@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <header>
       <BarHeader />
-      <div className="flex items-center justify-between px-20 pt-7">
+      <div className="flex items-center justify-between px-20 pt-3">
         <Image
           className="w-60"
           src={logoPaqueta}

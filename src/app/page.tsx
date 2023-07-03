@@ -1,11 +1,5 @@
-import { Hero } from '@/components/Hero'
-import { InfosBar } from '@/components/InfosBar'
+import { Main } from '@/components/Main'
 
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-      <InfosBar />
-    </main>
-  )
+  return <Main />
 }
