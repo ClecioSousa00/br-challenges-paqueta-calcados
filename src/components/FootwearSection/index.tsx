@@ -15,7 +15,7 @@ export const FootwearSection = ({
 }: FootwearSectionProps) => {
   return (
     <section
-      className={`mt-14 flex items-center justify-between px-20 ${
+      className={`mb-14 mt-14 flex items-center justify-between ${
         text === 'masculino' ? 'flex-row-reverse' : ''
       }`}
     >

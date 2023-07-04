@@ -6,25 +6,28 @@ import { FavoritesIcon } from '@/components/FavoritesIcon'
 import { BagIcon } from '@/components/BagIcon'
 import { UserIcon } from '@/components/UserIcon'
 import { NavBar } from '@/components/NavBar'
+import { Container } from '@/components/Container'
 
 export const Header = () => {
   return (
     <header>
       <BarHeader />
-      <div className="flex items-center justify-between px-20 pt-3">
-        <Image
-          className="w-60"
-          src={logoPaqueta}
-          alt="Nome da empresa Paquetá"
-        />
-        <div>
-          <ContainerIcons>
-            <FavoritesIcon />
-            <BagIcon />
-            <UserIcon />
-          </ContainerIcons>
+      <Container>
+        <div className="flex items-center justify-between  pt-3">
+          <Image
+            className="w-60"
+            src={logoPaqueta}
+            alt="Nome da empresa Paquetá"
+          />
+          <div>
+            <ContainerIcons>
+              <FavoritesIcon />
+              <BagIcon />
+              <UserIcon />
+            </ContainerIcons>
+          </div>
         </div>
-      </div>
+      </Container>
       <NavBar />
     </header>
   )
