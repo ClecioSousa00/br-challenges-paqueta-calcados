@@ -6,6 +6,7 @@ import footwearMan from '@/assets/calcados-masculinos.png'
 import { BarLine } from '../BarLine'
 import { Container } from '../Container'
 import { OutletSection } from '../OutletSection'
+import { HighlightsSection } from '../HighlightsSection'
 
 export const Main = () => {
   return (
@@ -28,6 +29,7 @@ export const Main = () => {
         </FootwearSection>
         <BarLine />
         <OutletSection />
+        <HighlightsSection />
       </Container>
     </main>
   )
