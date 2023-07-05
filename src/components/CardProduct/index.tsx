@@ -9,7 +9,7 @@ type CardProductProps = {
 
 export const CardProduct = ({ data }: CardProductProps) => {
   return (
-    <div className="bg-red- flex h-[380px] w-[290px] flex-col justify-between overflow-hidden rounded pb-6 shadow-2xl">
+    <div className=" flex h-[380px] w-[290px] flex-col justify-between overflow-hidden rounded pb-6 shadow-lg">
       <button className="mb-1 bg-primary-2  py-1 uppercase">
         Produto esgotado
       </button>
