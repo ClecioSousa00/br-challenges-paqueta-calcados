@@ -1,9 +1,12 @@
 import Image from 'next/image'
 import logoPaqueta from '@/assets/logos/logo (1).png'
 import { NumberingContainer } from '../NemberingContainer'
+import { Highlights } from '../Highlights'
+import { Brands } from '../Brands'
+
 export const OutletSection = () => {
   return (
-    <>
+    <section>
       <div className="mb-12 mt-14 flex w-full items-center justify-between">
         <div>
           <Image
@@ -20,9 +23,9 @@ export const OutletSection = () => {
           sua numeração.
         </p>
       </div>
-      <div>
-        <NumberingContainer />
-      </div>
-    </>
+      <NumberingContainer />
+      <Highlights />
+      <Brands />
+    </section>
   )
 }

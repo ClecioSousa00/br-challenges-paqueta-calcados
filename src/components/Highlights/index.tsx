@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import { CardProduct } from '../CardProduct'
 // import { axiosInstance } from '@/services/api'
 import { useAxios } from '@/hooks/useAxios'
 import { Slider } from '../Slider'
-import { SliderItem } from '../SliderItem'
 
 // type Price = {
 //   value: number
@@ -25,7 +23,7 @@ import { SliderItem } from '../SliderItem'
 //   return response.data
 // }
 
-export const HighlightsSection = async () => {
+export const Highlights = async () => {
   const dataShoes = await useAxios()
 
   return (

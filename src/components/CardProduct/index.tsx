@@ -18,7 +18,15 @@ export const CardProduct = ({ data }: CardProductProps) => {
           <LuHeart size={26} color="#CF5D00" />
         </div>
         <div className="mx-auto flex h-[150px]  w-[210px] items-center justify-center overflow-hidden">
-          <Image src={data.image} width={1000} height={1000} alt="aa" />
+          <Image
+            className="h-auto w-full"
+            src={data.image}
+            width="0"
+            height="0"
+            unoptimized
+            priority={true}
+            alt={data.name}
+          />
         </div>
         <div>
           <p className="mb-3 font-alt text-sm font-medium uppercase text-dark">
