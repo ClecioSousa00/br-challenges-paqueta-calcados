@@ -1,7 +1,12 @@
 'use client'
-import { DataShoesProvider } from '@/context/dataShoes'
+import { BagProvider } from '@/context/Bag/bagContext'
+import { FavoritesProvider } from '@/context/Favorites'
 import { ReactNode } from 'react'
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  return <DataShoesProvider>{children}</DataShoesProvider>
+  return (
+    <BagProvider>
+      <FavoritesProvider>{children}</FavoritesProvider>
+    </BagProvider>
+  )
 }

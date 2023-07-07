@@ -10,7 +10,7 @@ export const CardButton = ({ type, addItemToCart }: CardButtonProps) => {
       className={`w-50 rounded  px-2 py-2 text-base uppercase ${
         type === true ? 'bg-primary-2' : 'bg-primary-3'
       }`}
-      onClick={() => {}}
+      onClick={addItemToCart}
     >
       {type === false ? 'Comprar' : 'Me avise quando chegar'}
     </button>

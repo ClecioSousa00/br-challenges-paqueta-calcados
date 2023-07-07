@@ -2,6 +2,11 @@ import Image from 'next/image'
 import { LuHeart } from 'react-icons/lu'
 import { Shoe } from '@/types/shoesTypes'
 import { CardButton } from '../CardButton'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { useFavoriteContext } from '@/context/Favorites'
+import { useBageContext } from '@/context/Bag/bagContext'
+import { useState } from 'react'
+import { ButtonFavoriteCard } from '../ButtonFavoriteCard'
 
 type CardProductProps = {
   data: Shoe
@@ -29,20 +34,49 @@ const parcelValue = (value: number) => {
 }
 
 export const CardProduct = ({ data }: CardProductProps) => {
+  const { getLocalStorage, setLocalStorage } = useLocalStorage('favorites', [])
+  const { favorites, setFavorites } = useFavoriteContext()
+  const { bagValue, setBagValue } = useBageContext()
+  const [favoriteSelect, setFavoriteSelect] = useState(false)
+
+  const addProductBag = () => {
+    // eslint-disable-next-line prefer-const
+    let value = getLocalStorage('itemsBag')
+    value++
+    setLocalStorage('itemsBag', value)
+    setBagValue(value)
+  }
+
+  const addProductFavorites = () => {
+    // eslint-disable-next-line prefer-const
+    let value = getLocalStorage('favorites')
+
+    if (!favoriteSelect) {
+      value++
+      setFavoriteSelect(true)
+    } else {
+      value--
+      setFavoriteSelect(false)
+    }
+    setLocalStorage('favorites', value)
+    setFavorites(value)
+  }
+
   const value = formattedValue(data.price.value)
   const newParcelValue = parcelValue(data.price.value)
   return (
     <div className=" flex h-[360px] w-[270px] flex-col overflow-hidden rounded pb-6 shadow-cardShadow">
       {data.soldout && (
-        <button className=" bg-primary-2  py-1 uppercase">
+        <p className=" bg-primary-2 py-1 text-center uppercase">
           Produto esgotado
-        </button>
+        </p>
       )}
 
       <div className="flex h-full flex-col justify-end px-5">
-        <div className="flex justify-end">
-          <LuHeart size={26} color="#CF5D00" />
-        </div>
+        <ButtonFavoriteCard
+          hasSelect={favoriteSelect}
+          addProductFavorites={() => addProductFavorites()}
+        />
         <div className="mx-auto flex h-[150px] w-[210px] items-center justify-center overflow-hidden">
           <Image
             className="h-auto w-full"
@@ -65,7 +99,7 @@ export const CardProduct = ({ data }: CardProductProps) => {
             OU 10X R$ {newParcelValue}
           </p>
         </div>
-        <CardButton type={data.soldout} />
+        <CardButton type={data.soldout} addItemToCart={() => addProductBag()} />
       </div>
     </div>
   )
