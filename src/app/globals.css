@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .swiper-slide{
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 .swiper-button-prev:after,  .swiper-button-next:after{
   color: #323232;

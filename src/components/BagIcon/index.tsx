@@ -3,7 +3,7 @@ import { useLocalStorage } from '@/hooks/useLocaStorage'
 import { LuShoppingBag } from 'react-icons/lu'
 
 export const BagIcon = () => {
-  const { value } = useLocalStorage('itemsBag')
+  const { value } = useLocalStorage('itemsBag', [])
 
   return (
     <>
