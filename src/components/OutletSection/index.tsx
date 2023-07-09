@@ -23,7 +23,9 @@ export const OutletSection = () => {
           sua numeração.
         </p>
       </div>
-      <NumberingContainer />
+      <div className="flex justify-center">
+        <NumberingContainer />
+      </div>
       <Highlights />
       <Brands />
     </section>

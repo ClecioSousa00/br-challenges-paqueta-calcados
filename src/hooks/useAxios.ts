@@ -14,8 +14,8 @@ type Shoe = {
   description: string
 }
 
-export const useAxios = async () => {
-  const response = await axiosInstance.get<Shoe[]>('')
+export const useAxios = async (route: string) => {
+  const response = await axiosInstance.get<Shoe[]>(`${route}`)
 
   return response.data
 }

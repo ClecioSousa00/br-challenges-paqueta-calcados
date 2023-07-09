@@ -24,7 +24,7 @@ import { Slider } from '../Slider'
 // }
 
 export const Highlights = async () => {
-  const dataShoes = await useAxios()
+  const dataShoes = await useAxios('/shoes')
 
   return (
     <>

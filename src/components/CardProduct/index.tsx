@@ -7,6 +7,7 @@ import { useFavoriteContext } from '@/context/Favorites'
 import { useBageContext } from '@/context/Bag/bagContext'
 import { useState } from 'react'
 import { ButtonFavoriteCard } from '../ButtonFavoriteCard'
+import { useRouter } from 'next/navigation'
 
 type CardProductProps = {
   data: Shoe
@@ -38,6 +39,11 @@ export const CardProduct = ({ data }: CardProductProps) => {
   const { favorites, setFavorites } = useFavoriteContext()
   const { bagValue, setBagValue } = useBageContext()
   const [favoriteSelect, setFavoriteSelect] = useState(false)
+  // const { push } = useRouter()
+
+  // const handleProduct = (id: string) => {
+  //   push(`/product/${id} `)
+  // }
 
   const addProductBag = () => {
     // eslint-disable-next-line prefer-const
@@ -99,7 +105,13 @@ export const CardProduct = ({ data }: CardProductProps) => {
             OU 10X R$ {newParcelValue}
           </p>
         </div>
-        <CardButton type={data.soldout} addItemToCart={() => addProductBag()} />
+        <CardButton
+          // onClick={() => handleProduct(data.id)}
+          type={data.soldout}
+          id={data.id}
+          // addItemToCart={() => addProductBag()}
+          // addItemToCart={() => handleProduct(data.id)}
+        />
       </div>
     </div>
   )

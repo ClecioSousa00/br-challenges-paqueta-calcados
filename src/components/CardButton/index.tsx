@@ -1,18 +1,21 @@
 'use client'
+
+import Link from 'next/link'
+
 type CardButtonProps = {
   type: boolean
-  addItemToCart?: () => void
+  id: string
 }
 
-export const CardButton = ({ type, addItemToCart }: CardButtonProps) => {
+export const CardButton = ({ type, id }: CardButtonProps) => {
   return (
-    <button
-      className={`w-50 rounded  px-2 py-2 text-base uppercase ${
+    <Link
+      href={`/product/${id}`}
+      className={`inline-block w-full rounded  px-2 py-2 text-center text-base uppercase ${
         type === true ? 'bg-primary-2' : 'bg-primary-3'
       }`}
-      onClick={addItemToCart}
     >
       {type === false ? 'Comprar' : 'Me avise quando chegar'}
-    </button>
+    </Link>
   )
 }
