@@ -3,7 +3,7 @@ export const UserIcon = () => {
   return (
     <>
       <LuUser size={26} />
-      <span className="text-sm font-normal">Sacola</span>
+      <span className="text-sm font-normal">Usuário</span>
     </>
   )
 }

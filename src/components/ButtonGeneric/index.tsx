@@ -1,15 +1,10 @@
-'use client'
 type ButtonGenericProps = {
   text: string
-  addItemToCart?: () => void
 }
 
-export const ButtonGeneric = ({ text, addItemToCart }: ButtonGenericProps) => {
+export const ButtonGeneric = ({ text }: ButtonGenericProps) => {
   return (
-    <button
-      className="w-80 rounded bg-primary-3 py-2 text-lg uppercase"
-      onClick={() => {}}
-    >
+    <button className="w-80 rounded bg-primary-3 py-2 text-lg uppercase">
       {text}
     </button>
   )
