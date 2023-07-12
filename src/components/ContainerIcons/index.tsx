@@ -1,4 +1,3 @@
-import { useLocalStorage } from '@/hooks/useLocaStorage'
 import { ReactNode } from 'react'
 
 type ContainerIconProps = {
