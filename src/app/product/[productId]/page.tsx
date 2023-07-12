@@ -1,4 +1,3 @@
-'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LuInstagram, LuFacebook, LuTwitter, LuYoutube } from 'react-icons/lu'
@@ -10,6 +9,7 @@ import { Container } from '@/components/Container'
 import { NumberingContainer } from '@/components/NemberingContainer'
 import { PurchaseButton } from '@/components/PageProduct/PurchaseButton'
 import { ContainerProduct } from '@/components/PageProduct/ContainerProduct'
+import { ListProducts } from '@/components/PageProduct/ListProducts'
 
 type ParamsProps = {
   params: {
@@ -18,21 +18,23 @@ type ParamsProps = {
 }
 
 export default function Product({ params }: ParamsProps) {
-  const [product, setProduct] = useState<Shoe>()
+  // const [product, setProduct] = useState<Shoe>()
 
-  useEffect(() => {
-    const GetProduct = async () => {
-      const [data] = await useAxios(`/shoe/${params.productId}`)
-      setProduct(data)
-    }
-    GetProduct()
-  }, [])
+  // useEffect(() => {
+  //   const GetProduct = async () => {
+  //     const [data] = await useAxios(`/shoe/${params.productId}`)
+  //     setProduct(data)
+  //   }
+  //   GetProduct()
+  // }, [])
 
-  if (!product) return
+  // if (!product) return
+  if (!params.productId) return
 
   return (
     <Container>
-      <ContainerProduct data={product} />
+      <ContainerProduct idProduct={params.productId} />
+      <ListProducts />
       {/* <Link
         className="mt-10 inline-block font-alt text-base text-secondary-2"
         href={'/'}

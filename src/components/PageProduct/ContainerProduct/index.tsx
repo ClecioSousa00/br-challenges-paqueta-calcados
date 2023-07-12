@@ -1,3 +1,4 @@
+'use client'
 import { NumberingContainer } from '@/components/NemberingContainer'
 import { Shoe } from '@/types/shoesTypes'
 import Image from 'next/image'
@@ -7,12 +8,45 @@ import { LuFacebook, LuInstagram, LuTwitter, LuYoutube } from 'react-icons/lu'
 import { PurchaseButton } from '../PurchaseButton'
 import { parcelValue } from '@/utils/parcelValueProduct'
 import { formattedValue } from '@/utils/formattedvalueProduct'
+import { ListProducts } from '../ListProducts'
+import { useEffect, useState } from 'react'
+import { useAxios } from '@/hooks/useAxios'
 
-type teste = {
-  data: Shoe
+// type teste = {
+//   data: Shoe
+// }
+type ContainerProductProps = {
+  idProduct: string
 }
 
-export const ContainerProduct = ({ data }: teste) => {
+export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
+  const [data, setProduct] = useState<Shoe>()
+
+  useEffect(() => {
+    const GetProduct = async () => {
+      const [data] = await useAxios(`/shoe/${idProduct}`)
+      setProduct(data)
+    }
+    GetProduct()
+  }, [])
+
+  if (!data) return
+
+  // const valueProductFormatted = formattedValue(data.price.value)
+
+  // const CalculateProductDiscount = (price: number, discount: number) => {
+  //   const discountValue = price * discount
+  //   const newDiscountPrice = price - discountValue
+
+  //   return newDiscountPrice
+  // }
+  // const newDiscountPrice = CalculateProductDiscount(
+  //   data.price.value,
+  //   data.price.discount,
+  // )
+  // const newDiscountPriceFormatted = formattedValue(newDiscountPrice)
+  // const parcelValueProduct = parcelValue(newDiscountPrice)
+
   const valueProductFormatted = formattedValue(data.price.value)
 
   const CalculateProductDiscount = (price: number, discount: number) => {

@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react'
 import { FaRegHeart, FaHeart } from 'react-icons/fa6'
 
