@@ -8,7 +8,7 @@ import { LuFacebook, LuInstagram, LuTwitter, LuYoutube } from 'react-icons/lu'
 import { PurchaseButton } from '../PurchaseButton'
 import { parcelValue } from '@/utils/parcelValueProduct'
 import { formattedValue } from '@/utils/formattedvalueProduct'
-import { ListProducts } from '../ListProducts'
+// import { ListProducts } from '../ListProducts'
 import { useEffect, useState } from 'react'
 import { useAxios } from '@/hooks/useAxios'
 
