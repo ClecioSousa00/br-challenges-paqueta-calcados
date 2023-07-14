@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import './globals.css'
 import { Poppins, Montserrat } from 'next/font/google'
 import { Header } from '@/components/Header'
+import { Providers } from '@/providers/provider'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -26,8 +27,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${poppins.variable} ${montserrat.variable} h-screen bg-white font-sans text-white`}
       >
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   )

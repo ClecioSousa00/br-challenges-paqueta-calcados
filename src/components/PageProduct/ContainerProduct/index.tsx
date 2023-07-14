@@ -8,19 +8,19 @@ import { LuFacebook, LuInstagram, LuTwitter, LuYoutube } from 'react-icons/lu'
 import { PurchaseButton } from '../PurchaseButton'
 import { parcelValue } from '@/utils/parcelValueProduct'
 import { formattedValue } from '@/utils/formattedvalueProduct'
-// import { ListProducts } from '../ListProducts'
 import { useEffect, useState } from 'react'
 import { useAxios } from '@/hooks/useAxios'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
 
-// type teste = {
-//   data: Shoe
-// }
 type ContainerProductProps = {
   idProduct: string
 }
 
 export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   const [data, setProduct] = useState<Shoe>()
+  const { setProductLocaStorage } = useLocalStorage()
+  const { productList, setProductList } = useLocalStorageContext()
 
   useEffect(() => {
     const GetProduct = async () => {
@@ -28,7 +28,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
       setProduct(data)
     }
     GetProduct()
-  }, [])
+  }, [idProduct])
 
   if (!data) return
 
@@ -61,6 +61,11 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   )
   const newDiscountPriceFormatted = formattedValue(newDiscountPrice)
   const parcelValueProduct = parcelValue(newDiscountPrice)
+
+  const handlePurchaseProduct = () => {
+    setProductList([...productList, data])
+    setProductLocaStorage(data)
+  }
 
   return (
     <>
@@ -138,7 +143,10 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
             </button>
           </div>
           <div className="w-[50%]">
-            <PurchaseButton type={data.soldout} />
+            <PurchaseButton
+              handlePurchaseProduct={handlePurchaseProduct}
+              type={data.soldout}
+            />
           </div>
         </div>
       </div>
