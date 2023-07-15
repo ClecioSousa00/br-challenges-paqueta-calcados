@@ -31,6 +31,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   }, [idProduct])
 
   if (!data) return
+  console.log(data)
 
   // const valueProductFormatted = formattedValue(data.price.value)
 

@@ -1,13 +1,18 @@
 'use client'
 import { Shoe } from '@/types/shoesTypes'
+import { useEffect, useState } from 'react'
 
 export const useLocalStorage = () => {
   const key = '@paqueta:products'
+  const [product, setProduct] = useState<Shoe[]>([])
 
-  const getProductLocalStorage = () => {
-    const data = localStorage.getItem(key)
-    return JSON.parse(data!)
-  }
+  useEffect(() => {
+    const getProductLocalStorage = () => {
+      const data = localStorage.getItem(key)
+      setProduct(JSON.parse(data!))
+    }
+    getProductLocalStorage()
+  }, [])
 
   const setProductLocaStorage = (data: Shoe) => {
     const dataProducts = localStorage.getItem(key)
@@ -15,9 +20,10 @@ export const useLocalStorage = () => {
     const dataFormatted = [...currentProducts, data]
     localStorage.setItem(key, JSON.stringify(dataFormatted))
   }
+  console.log(product)
 
   return {
-    getProductLocalStorage,
+    product,
     setProductLocaStorage,
   }
 }

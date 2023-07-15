@@ -11,7 +11,7 @@ import { Container } from '@/components/Container'
 import { ContainerProduct } from '@/components/PageProduct/ContainerProduct'
 import { ListProducts } from '@/components/PageProduct/ListProducts'
 import { Suspense } from 'react'
-import ProductLoading from '../ProductLoading'
+import Loading from './Loading'
 
 type ParamsProps = {
   params: {
@@ -31,11 +31,11 @@ export default function Product({ params }: ParamsProps) {
   // }, [])
 
   // if (!product) return
-  if (!params.productId) return
+  // if (!params.productId) return
 
   return (
     <Container>
-      <Suspense fallback={<ProductLoading />}>
+      <Suspense fallback={<Loading />}>
         <ContainerProduct idProduct={params.productId} />
       </Suspense>
       <ListProducts />
