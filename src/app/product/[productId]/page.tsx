@@ -10,6 +10,8 @@ import { Container } from '@/components/Container'
 // import { PurchaseButton } from '@/components/PageProduct/PurchaseButton'
 import { ContainerProduct } from '@/components/PageProduct/ContainerProduct'
 import { ListProducts } from '@/components/PageProduct/ListProducts'
+import { Suspense } from 'react'
+import ProductLoading from '../ProductLoading'
 
 type ParamsProps = {
   params: {
@@ -33,7 +35,9 @@ export default function Product({ params }: ParamsProps) {
 
   return (
     <Container>
-      <ContainerProduct idProduct={params.productId} />
+      <Suspense fallback={<ProductLoading />}>
+        <ContainerProduct idProduct={params.productId} />
+      </Suspense>
       <ListProducts />
       {/* <Link
         className="mt-10 inline-block font-alt text-base text-secondary-2"

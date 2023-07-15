@@ -1,3 +1,4 @@
+'use client'
 import { Shoe } from '@/types/shoesTypes'
 
 export const useLocalStorage = () => {
