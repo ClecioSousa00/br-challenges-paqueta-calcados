@@ -1,9 +1,9 @@
-import { ItemsInfosBar } from '../ItemsInfosBar'
-import { Arrows } from '../icons/Arrows'
-import { Box } from '../icons/Box'
-import { Card } from '../icons/Card'
-import { Discount } from '../icons/Discount'
-import { Location } from '../icons/Location'
+import { ItemsInfosBar } from './ItemsInfosBar'
+import { Arrows } from '../../icons/Arrows'
+import { Box } from '../../icons/Box'
+import { Card } from '../../icons/Card'
+import { Discount } from '../../icons/Discount'
+import { Location } from '../../icons/Location'
 
 export const InfosBar = () => {
   return (

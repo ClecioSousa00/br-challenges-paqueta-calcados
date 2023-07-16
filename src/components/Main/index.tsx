@@ -1,12 +1,11 @@
-import { FootwearSection } from '@/components/FootwearSection'
-import { Hero } from '@/components/Hero'
-import { InfosBar } from '@/components/InfosBar'
+import { FootwearSection } from '@/components/Main/FootwearSection'
+import { Hero } from '@/components/Main/Hero'
+import { InfosBar } from '@/components/Main/InfosBar'
 import footwearWoman from '@/assets/calcados-femininos.png'
 import footwearMan from '@/assets/calcados-masculinos.png'
 import { BarLine } from '../BarLine'
 import { Container } from '../Container'
-import { OutletSection } from '../OutletSection'
-import { NewsSection } from '../NewsSecton'
+import { OutletSection } from './OutletSection'
 
 export const Main = () => {
   return (
@@ -30,7 +29,6 @@ export const Main = () => {
         <BarLine />
         <OutletSection />
       </Container>
-      <NewsSection />
     </main>
   )
 }

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image'
-import { ButtonGeneric } from '../ButtonGeneric'
+import { ButtonGeneric } from '../../ButtonGeneric'
 import { ReactNode } from 'react'
 
 type FootwearSectionProps = {

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 // import { axiosInstance } from '@/services/api'
 import { useAxios } from '@/hooks/useAxios'
-import { Slider } from '../Slider'
+import { Slider } from './Slider'
 
 // type Price = {
 //   value: number

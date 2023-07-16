@@ -15,7 +15,7 @@ import 'swiper/css/scrollbar'
 // }
 
 import { Shoe } from '@/types/shoesTypes'
-import { CardProduct } from '../CardProduct'
+import { CardProduct } from '../../CardProduct'
 
 type SliderProps = {
   data: Shoe[]

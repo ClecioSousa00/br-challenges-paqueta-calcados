@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import logoPaqueta from '@/assets/logos/logo (1).png'
-import { NumberingContainer } from '../NemberingContainer'
-import { Highlights } from '../Highlights'
+import { NumberingContainer } from '../../NemberingContainer'
+import { Highlights } from '../../Highlights'
 import { Brands } from '../Brands'
 
 export const OutletSection = () => {

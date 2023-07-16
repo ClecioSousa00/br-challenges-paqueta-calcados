@@ -1,4 +1,4 @@
-import { ButtonGeneric } from '../ButtonGeneric'
+import { ButtonGeneric } from '../../ButtonGeneric'
 
 export const Hero = () => {
   return (

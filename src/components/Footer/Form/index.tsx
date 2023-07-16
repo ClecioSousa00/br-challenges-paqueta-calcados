@@ -1,4 +1,4 @@
-import { ButtonGeneric } from '../ButtonGeneric'
+import { ButtonGeneric } from '@/components/ButtonGeneric'
 import { FormInput } from './FormInput'
 import { FaRegEnvelope } from 'react-icons/fa6'
 import { LuUser } from 'react-icons/lu'
