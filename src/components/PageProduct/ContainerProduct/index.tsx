@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { useAxios } from '@/hooks/useAxios'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
+import { PurchaseMenssage } from '../PurchaseMenssage'
 
 type ContainerProductProps = {
   idProduct: string
@@ -21,6 +22,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   const [data, setProduct] = useState<Shoe>()
   const { setProductLocaStorage } = useLocalStorage()
   const { productList, setProductList } = useLocalStorageContext()
+  const [isOpenMenssage, setIsOpenMenssage] = useState(false)
 
   useEffect(() => {
     const GetProduct = async () => {
@@ -63,9 +65,22 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   const newDiscountPriceFormatted = formattedValue(newDiscountPrice)
   const parcelValueProduct = parcelValue(newDiscountPrice)
 
-  const handlePurchaseProduct = () => {
-    setProductList([...productList, data])
-    setProductLocaStorage(data)
+  const handlePurchaseProduct = (id: string) => {
+    const isProductAlreadySelected = productList.some(
+      (product) => product.id === id,
+    )
+
+    if (!isProductAlreadySelected) {
+      setProductList([...productList, data])
+      setProductLocaStorage(data)
+    }
+    setIsOpenMenssage(true)
+    // setProductList([...productList, data])
+    // setProductLocaStorage(data)
+  }
+
+  const closeMenssagePurchase = () => {
+    setIsOpenMenssage(false)
   }
 
   return (
@@ -134,7 +149,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
               ou 10x R$ {parcelValueProduct}
             </span>
           </div>
-          <div className="mt-10">
+          <div className="relative mt-10">
             <p className="text-alt mb-5 text-lg text-secondary">
               Escolha a numeração:
             </p>
@@ -142,10 +157,19 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
             <button className="mb-5 mt-5 cursor-pointer text-base font-semibold text-secondary-2">
               Guia de tamanhos
             </button>
+            {isOpenMenssage && (
+              <div className="absolute -bottom-[130px] right-0">
+                {' '}
+                <PurchaseMenssage
+                  isOpen={isOpenMenssage}
+                  closeMenssage={closeMenssagePurchase}
+                />
+              </div>
+            )}
           </div>
           <div className="w-[50%]">
             <PurchaseButton
-              handlePurchaseProduct={handlePurchaseProduct}
+              handlePurchaseProduct={() => handlePurchaseProduct(data.id)}
               type={data.soldout}
             />
           </div>

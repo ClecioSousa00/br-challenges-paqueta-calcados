@@ -8,7 +8,9 @@ export const NumberingContainer = () => {
           key={index}
           className="flex h-14 w-14 cursor-pointer  items-center justify-center rounded border border-secondary border-opacity-20"
         >
-          <span className="text-xl font-medium text-secondary-2">{item}</span>
+          <button className="text-xl font-medium text-secondary-2">
+            {item}
+          </button>
         </div>
       ))}
     </div>
