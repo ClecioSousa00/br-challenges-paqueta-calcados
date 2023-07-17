@@ -1,12 +1,28 @@
+'use client'
 import { Shoe } from '@/types/shoesTypes'
+import { CalculateProductDiscount } from '@/utils/calculateProductDiscount'
+import { formattedValue } from '@/utils/formattedvalueProduct'
 import Image from 'next/image'
 import { LuTrash2 } from 'react-icons/lu'
 
 type ProductBagProps = {
   data: Shoe
+  removeProductLocalStorage: (id: string) => void
 }
 
-export const ProductBag = ({ data }: ProductBagProps) => {
+export const ProductBag = ({
+  removeProductLocalStorage,
+  data,
+}: ProductBagProps) => {
+  let formattedPrice = formattedValue(data.price.value)
+  if (data.price.discount) {
+    const productDiscountPrice = CalculateProductDiscount(
+      data.price.value,
+      data.price.discount,
+    )
+    formattedPrice = formattedValue(productDiscountPrice)
+  }
+
   return (
     <div key={data.id} className="flex items-start justify-between py-6">
       <div className="flex items-start justify-between">
@@ -27,14 +43,17 @@ export const ProductBag = ({ data }: ProductBagProps) => {
             Código do produto {data.id}
           </p>
           <div className="mt-5 space-y-2 font-alt text-base font-bold text-secondary">
-            <p>Numeração:</p>
-            <p>Cor:</p>
-            <p>Quantidade:</p>
-            <p>Preço: {data.price.value}</p>
+            <div className="flex items-center gap-3">
+              <p>Quantidade: 1</p>
+            </div>
+            <p>Preço: {formattedPrice}</p>
           </div>
         </div>
       </div>
-      <button className="flex items-center gap-2 px-2 py-2 text-secondary">
+      <button
+        onClick={() => removeProductLocalStorage(data.id)}
+        className="flex items-center gap-2 px-2 py-2 text-secondary"
+      >
         <LuTrash2 /> Remover
       </button>
     </div>

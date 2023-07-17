@@ -13,6 +13,7 @@ import { useAxios } from '@/hooks/useAxios'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
 import { PurchaseMenssage } from '../PurchaseMenssage'
+import { CalculateProductDiscount } from '@/utils/calculateProductDiscount'
 
 type ContainerProductProps = {
   idProduct: string
@@ -33,31 +34,9 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   }, [idProduct])
 
   if (!data) return
-  console.log(data)
-
-  // const valueProductFormatted = formattedValue(data.price.value)
-
-  // const CalculateProductDiscount = (price: number, discount: number) => {
-  //   const discountValue = price * discount
-  //   const newDiscountPrice = price - discountValue
-
-  //   return newDiscountPrice
-  // }
-  // const newDiscountPrice = CalculateProductDiscount(
-  //   data.price.value,
-  //   data.price.discount,
-  // )
-  // const newDiscountPriceFormatted = formattedValue(newDiscountPrice)
-  // const parcelValueProduct = parcelValue(newDiscountPrice)
 
   const valueProductFormatted = formattedValue(data.price.value)
 
-  const CalculateProductDiscount = (price: number, discount: number) => {
-    const discountValue = price * discount
-    const newDiscountPrice = price - discountValue
-
-    return newDiscountPrice
-  }
   const newDiscountPrice = CalculateProductDiscount(
     data.price.value,
     data.price.discount,
@@ -72,7 +51,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
 
     if (!isProductAlreadySelected) {
       setProductList([...productList, data])
-      setProductLocaStorage(data)
+      setProductLocaStorage([...productList, data])
     }
     setIsOpenMenssage(true)
     // setProductList([...productList, data])
@@ -183,12 +162,6 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
         <p className="font-alt text-lg font-light text-secondary">
           {data.description}
         </p>
-      </div>
-
-      <div className="mt-20">
-        <h2 className="mb-4 font-alt text-3xl font-semibold uppercase text-dark">
-          talvez possa lhe interessar
-        </h2>
       </div>
     </>
   )

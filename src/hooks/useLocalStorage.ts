@@ -14,13 +14,12 @@ export const useLocalStorage = () => {
     getProductLocalStorage()
   }, [])
 
-  const setProductLocaStorage = (data: Shoe) => {
-    const dataProducts = localStorage.getItem(key)
-    const currentProducts = dataProducts ? JSON.parse(dataProducts) : []
-    const dataFormatted = [...currentProducts, data]
-    localStorage.setItem(key, JSON.stringify(dataFormatted))
+  const setProductLocaStorage = (data: Shoe[]) => {
+    // const dataProducts = localStorage.getItem(key)
+    // const currentProducts = dataProducts ? JSON.parse(dataProducts) : []
+    // const dataFormatted = [...currentProducts, data]
+    localStorage.setItem(key, JSON.stringify(data))
   }
-  console.log(product)
 
   return {
     product,
