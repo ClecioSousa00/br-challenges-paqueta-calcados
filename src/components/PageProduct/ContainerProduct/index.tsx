@@ -1,26 +1,29 @@
 'use client'
-import { NumberingContainer } from '@/components/NemberingContainer'
-import { Shoe } from '@/types/shoesTypes'
 import Image from 'next/image'
-import Link from 'next/link'
-import { FaHeart, FaPinterestP } from 'react-icons/fa6'
-import { LuFacebook, LuInstagram, LuTwitter, LuYoutube } from 'react-icons/lu'
-import { PurchaseButton } from '../PurchaseButton'
-import { parcelValue } from '@/utils/parcelValueProduct'
-import { formattedValue } from '@/utils/formattedvalueProduct'
+// import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useAxios } from '@/hooks/useAxios'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
-import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
-import { PurchaseMenssage } from '../PurchaseMenssage'
 import { CalculateProductDiscount } from '@/utils/calculateProductDiscount'
+import { formattedValue } from '@/utils/formattedvalueProduct'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { Shoe } from '@/types/shoesTypes'
+import { parcelValue } from '@/utils/parcelValueProduct'
+import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
+
+import { NumberingContainer } from '@/components/NemberingContainer'
+import { FaPinterestP } from 'react-icons/fa6'
+import { LuFacebook, LuInstagram, LuTwitter, LuYoutube } from 'react-icons/lu'
+import { PurchaseButton } from '../PurchaseButton'
+import { PurchaseMenssage } from '../PurchaseMenssage'
+import { ButtonFavoriteCard } from '@/components/ButtonFavoriteCard'
+import { BackButton } from '@/components/BackButton'
 
 type ContainerProductProps = {
   idProduct: string
 }
 
 export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
-  const [data, setProduct] = useState<Shoe>()
+  const [data, setProduct] = useState<Shoe>({} as Shoe)
   const { setProductLocaStorage } = useLocalStorage()
   const { productList, setProductList } = useLocalStorageContext()
   const [isOpenMenssage, setIsOpenMenssage] = useState(false)
@@ -33,7 +36,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
     GetProduct()
   }, [idProduct])
 
-  if (!data) return
+  if (!data.id) return
 
   const valueProductFormatted = formattedValue(data.price.value)
 
@@ -53,9 +56,11 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
       setProductList([...productList, data])
       setProductLocaStorage([...productList, data])
     }
+
     setIsOpenMenssage(true)
-    // setProductList([...productList, data])
-    // setProductLocaStorage(data)
+    setTimeout(() => {
+      setIsOpenMenssage(false)
+    }, 2000)
   }
 
   const closeMenssagePurchase = () => {
@@ -63,8 +68,8 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
   }
 
   return (
-    <>
-      <Link
+    <main className="mt-32">
+      {/* <Link
         className="mt-10 inline-block font-alt text-base text-secondary-2"
         href={'/'}
       >
@@ -72,13 +77,14 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
       </Link>
       <span className="inline-block border-b-2 border-b-primary font-alt text-base text-secondary">
         {data.name}
-      </span>
+      </span> */}
+      <BackButton routeName={data.name} />
       <div className="flex">
         <div className="w-[50%]">
           <div className="h-[550px] w-[550px] overflow-hidden">
             <Image
               className="h-auto w-full"
-              src={data?.image}
+              src={data.image}
               width="0"
               height="0"
               unoptimized
@@ -100,9 +106,7 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
 
         <div className="w-[50%]">
           <div>
-            <button>
-              <FaHeart size={26} color="#CF5D00" />
-            </button>
+            <ButtonFavoriteCard />
             <p className="max-w-[450px] font-alt text-4xl font-semibold text-dark">
               {data.name}
             </p>
@@ -163,6 +167,6 @@ export const ContainerProduct = ({ idProduct }: ContainerProductProps) => {
           {data.description}
         </p>
       </div>
-    </>
+    </main>
   )
 }

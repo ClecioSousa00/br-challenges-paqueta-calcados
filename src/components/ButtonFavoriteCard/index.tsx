@@ -9,14 +9,12 @@ export const ButtonFavoriteCard = () => {
     setFavoriteSelect(!favoriteSelect)
   }
   return (
-    <div className="flex justify-end">
-      <button onClick={() => addProductFavorites()}>
-        {favoriteSelect ? (
-          <FaHeart size={26} color="#CF5D00" />
-        ) : (
-          <FaRegHeart size={26} color="#CF5D00" />
-        )}
-      </button>
-    </div>
+    <button onClick={() => addProductFavorites()}>
+      {favoriteSelect ? (
+        <FaHeart size={26} color="#CF5D00" />
+      ) : (
+        <FaRegHeart size={26} color="#CF5D00" />
+      )}
+    </button>
   )
 }

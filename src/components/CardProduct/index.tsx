@@ -42,7 +42,9 @@ export const CardProduct = ({ data }: CardProductProps) => {
       )}
 
       <div className="flex h-full flex-col justify-end px-5">
-        <ButtonFavoriteCard />
+        <div className="flex justify-end">
+          <ButtonFavoriteCard />
+        </div>
         <div className="mx-auto flex h-[150px] w-[210px] items-center justify-center overflow-hidden">
           <Image
             className="h-auto w-full"

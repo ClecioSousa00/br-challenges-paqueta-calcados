@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const NavBar = () => {
   return (
-    <nav className=" mt-6 px-20">
+    <nav className="mt-44">
       <ul className="flex w-full justify-between">
         <li className="text-lg font-medium text-[#383838]">
           {' '}

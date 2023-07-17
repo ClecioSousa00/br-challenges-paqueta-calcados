@@ -1,12 +1,14 @@
+import { BackButton } from '@/components/BackButton'
 import { Container } from '@/components/Container'
 import { ProductsBag } from '@/components/PageBag/ProductsBag'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export default function bag() {
   return (
-    <main>
+    <main className="mt-32">
       <Container>
-        <Link
+        <BackButton />
+        {/* <Link
           className="mt-10 inline-block font-alt text-base text-secondary-2"
           href={'/'}
         >
@@ -14,7 +16,7 @@ export default function bag() {
         </Link>
         <span className="inline-block border-b-2 border-b-primary font-alt text-base text-secondary">
           Sacola
-        </span>
+        </span> */}
         <ProductsBag />
       </Container>
     </main>

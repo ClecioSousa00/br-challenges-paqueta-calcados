@@ -9,7 +9,7 @@ import { OutletSection } from './OutletSection'
 
 export const Main = () => {
   return (
-    <main>
+    <main className="">
       <Hero />
       <InfosBar />
       <Container>
