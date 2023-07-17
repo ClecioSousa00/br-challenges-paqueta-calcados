@@ -3,6 +3,8 @@
 import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { Shoe } from '@/types/shoesTypes'
+import { useState } from 'react'
+import { PurchaseMenssage } from '../PurchaseMenssage'
 
 type PurchaseButtonProps = {
   type: boolean
@@ -12,6 +14,7 @@ type PurchaseButtonProps = {
 export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
   const { setProductLocaStorage } = useLocalStorage()
   const { productList, setProductList } = useLocalStorageContext()
+  const [isOpenMenssage, setIsOpenMenssage] = useState(false)
 
   const handlePurchaseProduct = () => {
     const isProductAlreadySelected = productList.some(
@@ -21,6 +24,10 @@ export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
     if (!isProductAlreadySelected) {
       setProductList([...productList, product])
       setProductLocaStorage([...productList, product])
+      setIsOpenMenssage(true)
+      setTimeout(() => {
+        setIsOpenMenssage(false)
+      }, 2000)
     }
   }
 
@@ -28,14 +35,22 @@ export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
     if (!type) handlePurchaseProduct()
   }
   return (
-    <button
-      onClick={handleClick}
-      className={`inline-block w-full rounded  px-2 py-2 text-center text-base uppercase ${
-        type ? 'bg-primary-2' : 'bg-primary-3'
-      }`}
-    >
-      {type ? 'Me avise quando chegar' : 'Comprar'}
-    </button>
+    <div className="relative ">
+      <button
+        onClick={handleClick}
+        className={`inline-block w-[50%] rounded  px-2 py-2 text-center text-base uppercase ${
+          type ? 'bg-primary-2' : 'bg-primary-3'
+        }`}
+      >
+        {type ? 'Me avise quando chegar' : 'Comprar'}
+      </button>
+      {isOpenMenssage && (
+        <div className="absolute -right-20 ">
+          {' '}
+          <PurchaseMenssage isOpen={isOpenMenssage} />
+        </div>
+      )}
+    </div>
   )
 }
 // type PurchaseButtonProps = {

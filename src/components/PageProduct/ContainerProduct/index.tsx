@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { CalculateProductDiscount } from '@/utils/calculateProductDiscount'
 import { formattedValue } from '@/utils/formattedvalueProduct'
 // import { useLocalStorage } from '@/hooks/useLocalStorage'
-import { Shoe } from '@/types/shoesTypes'
+// import { Shoe } from '@/types/shoesTypes'
 import { parcelValue } from '@/utils/parcelValueProduct'
 // import { useLocalStorageContext } from '@/contexts/productsLocalStorage'
 
@@ -17,21 +17,27 @@ import { PurchaseButton } from '../PurchaseButton'
 // import { PurchaseMenssage } from '../PurchaseMenssage'
 import { ButtonFavoriteCard } from '@/components/ButtonFavoriteCard'
 import { BackButton } from '@/components/BackButton'
+import { useAxios } from '@/hooks/useAxios'
 
 type ContainerProductProps = {
-  dataProduct: Shoe
+  id: string
 }
 
-export const ContainerProduct = ({ dataProduct }: ContainerProductProps) => {
+// type ContainerProductProps = {
+//   dataProduct: Shoe
+// }
+
+export const ContainerProduct = async ({ id }: ContainerProductProps) => {
+  const [data] = await useAxios(`/shoe/${id}`)
   // const { setProductLocaStorage } = useLocalStorage()
   // const { productList, setProductList } = useLocalStorageContext()
   // const [isOpenMenssage, setIsOpenMenssage] = useState(false)
 
-  const valueProductFormatted = formattedValue(dataProduct.price.value)
+  const valueProductFormatted = formattedValue(data.price.value)
 
   const newDiscountPrice = CalculateProductDiscount(
-    dataProduct.price.value,
-    dataProduct.price.discount,
+    data.price.value,
+    data.price.discount,
   )
   const newDiscountPriceFormatted = formattedValue(newDiscountPrice)
   const parcelValueProduct = parcelValue(newDiscountPrice)
@@ -67,18 +73,18 @@ export const ContainerProduct = ({ dataProduct }: ContainerProductProps) => {
       <span className="inline-block border-b-2 border-b-primary font-alt text-base text-secondary">
         {data.name}
       </span> */}
-      <BackButton routeName={dataProduct.name} />
+      <BackButton routeName={data.name} />
       <div className="flex">
         <div className="w-[50%]">
           <div className="h-[550px] w-[550px] overflow-hidden">
             <Image
               className="h-auto w-full"
-              src={dataProduct.image}
+              src={data.image}
               width="0"
               height="0"
               unoptimized
               priority={true}
-              alt={dataProduct.name}
+              alt={data.name}
             />
           </div>
           <div>
@@ -97,20 +103,20 @@ export const ContainerProduct = ({ dataProduct }: ContainerProductProps) => {
           <div>
             <ButtonFavoriteCard />
             <p className="max-w-[450px] font-alt text-4xl font-semibold text-dark">
-              {dataProduct.name}
+              {data.name}
             </p>
             <span className="font-alt text-base text-secondary">
-              Código do produto: {dataProduct.id}
+              Código do produto: {data.id}
             </span>
           </div>
           <div className="mt-12">
-            {dataProduct.price.discount && (
+            {data.price.discount && (
               <div className="mb-4 flex items-center gap-5">
                 <span className="text-5 font-alt text-secondary">
                   {valueProductFormatted}
                 </span>
                 <p className="rounded bg-success px-3 font-alt text-sm font-semibold">
-                  {dataProduct.price.discount * 100}% de desconto
+                  {data.price.discount * 100}% de desconto
                 </p>
               </div>
             )}
@@ -139,9 +145,12 @@ export const ContainerProduct = ({ dataProduct }: ContainerProductProps) => {
               </div>
             )} */}
           </div>
-          <div className="w-[50%]">
-            <PurchaseButton product={dataProduct} type={dataProduct.soldout} />
-          </div>
+
+          <PurchaseButton product={data} type={data.soldout} />
+
+          {/* <div className="w-[50%]">
+            <PurchaseButton product={data} type={data.soldout} />
+          </div> */}
         </div>
       </div>
 
@@ -150,7 +159,7 @@ export const ContainerProduct = ({ dataProduct }: ContainerProductProps) => {
           descrição do produto
         </h2>
         <p className="font-alt text-lg font-light text-secondary">
-          {dataProduct.description}
+          {data.description}
         </p>
       </div>
     </main>

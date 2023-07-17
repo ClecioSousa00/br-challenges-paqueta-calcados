@@ -1,6 +1,8 @@
 import { BackButton } from '@/components/BackButton'
 import { Container } from '@/components/Container'
 import { ProductsBag } from '@/components/PageBag/ProductsBag'
+import { Suspense } from 'react'
+import Loading from './loading'
 // import Link from 'next/link'
 
 export default function bag() {
@@ -17,7 +19,9 @@ export default function bag() {
         <span className="inline-block border-b-2 border-b-primary font-alt text-base text-secondary">
           Sacola
         </span> */}
-        <ProductsBag />
+        <Suspense fallback={<Loading />}>
+          <ProductsBag />
+        </Suspense>
       </Container>
     </main>
   )
