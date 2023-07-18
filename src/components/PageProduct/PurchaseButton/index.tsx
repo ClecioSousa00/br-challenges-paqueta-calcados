@@ -24,11 +24,11 @@ export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
     if (!isProductAlreadySelected) {
       setProductList([...productList, product])
       setProductLocaStorage([...productList, product])
-      setIsOpenMenssage(true)
-      setTimeout(() => {
-        setIsOpenMenssage(false)
-      }, 2000)
     }
+    setIsOpenMenssage(true)
+    setTimeout(() => {
+      setIsOpenMenssage(false)
+    }, 2000)
   }
 
   const handleClick = () => {
@@ -38,9 +38,8 @@ export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
     <div className="relative ">
       <button
         onClick={handleClick}
-        className={`inline-block w-[50%] rounded  px-2 py-2 text-center text-base uppercase ${
-          type ? 'bg-primary-2' : 'bg-primary-3'
-        }`}
+        className={`inline-block w-[50%] rounded  px-2 py-2 text-center text-base uppercase transition-all hover:scale-105 
+        ${type ? 'bg-primary-2' : 'bg-primary-3'}`}
       >
         {type ? 'Me avise quando chegar' : 'Comprar'}
       </button>
@@ -53,26 +52,3 @@ export const PurchaseButton = ({ type, product }: PurchaseButtonProps) => {
     </div>
   )
 }
-// type PurchaseButtonProps = {
-//   type: boolean
-//   handlePurchaseProduct: () => void
-// }
-
-// export const PurchaseButton = ({
-//   type,
-//   handlePurchaseProduct,
-// }: PurchaseButtonProps) => {
-//   const handleClick = () => {
-//     if (!type) handlePurchaseProduct()
-//   }
-//   return (
-//     <button
-//       onClick={handleClick}
-//       className={`inline-block w-full rounded  px-2 py-2 text-center text-base uppercase ${
-//         type ? 'bg-primary-2' : 'bg-primary-3'
-//       }`}
-//     >
-//       {type ? 'Me avise quando chegar' : 'Comprar'}
-//     </button>
-//   )
-// }

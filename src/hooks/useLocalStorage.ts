@@ -15,9 +15,6 @@ export const useLocalStorage = () => {
   }, [])
 
   const setProductLocaStorage = (data: Shoe[]) => {
-    // const dataProducts = localStorage.getItem(key)
-    // const currentProducts = dataProducts ? JSON.parse(dataProducts) : []
-    // const dataFormatted = [...currentProducts, data]
     localStorage.setItem(key, JSON.stringify(data))
   }
 

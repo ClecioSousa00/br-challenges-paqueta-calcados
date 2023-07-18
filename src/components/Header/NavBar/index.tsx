@@ -1,33 +1,42 @@
 import Link from 'next/link'
 
 export const NavBar = () => {
+  const links = [
+    {
+      id: '#',
+      name: 'Novidades',
+    },
+    {
+      id: '#',
+      name: 'Feminino',
+    },
+    {
+      id: '#',
+      name: 'Masculino',
+    },
+    {
+      id: '#',
+      name: 'Paquetá Esportes',
+    },
+    {
+      id: '#',
+      name: 'Outlet',
+    },
+    {
+      id: '#',
+      name: 'Cashback',
+    },
+  ]
+
   return (
-    <nav className="mt-44">
+    <nav>
       <ul className="flex w-full justify-between">
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Novidades</Link>{' '}
-        </li>
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Feminino</Link>{' '}
-        </li>
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Masculino</Link>{' '}
-        </li>
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Paquetá Esportes</Link>{' '}
-        </li>
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Outlet</Link>{' '}
-        </li>
-        <li className="text-lg font-medium text-[#383838]">
-          {' '}
-          <Link href={'#'}>Cashback</Link>{' '}
-        </li>
+        {links.map((link, index) => (
+          <li key={index} className="text-lg font-medium text-secondary-2">
+            {' '}
+            <Link href={link.id}>{link.name}</Link>{' '}
+          </li>
+        ))}
       </ul>
     </nav>
   )

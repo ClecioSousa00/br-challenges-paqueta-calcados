@@ -14,12 +14,10 @@ type ProductContextProps = {
 }
 
 const ProductLocalStorageContext = createContext({} as ProductContextProps)
-// UserProvider
 
 export const LocalStorageProvider = ({ children }: { children: ReactNode }) => {
   const { product } = useLocalStorage()
 
-  // const getproducts = getProductLocalStorage()
   const [productList, setProductList] = useState(product)
   useEffect(() => {
     if (product) {
@@ -38,4 +36,3 @@ export const LocalStorageProvider = ({ children }: { children: ReactNode }) => {
 
 export const useLocalStorageContext = () =>
   useContext(ProductLocalStorageContext)
-// useUserContext

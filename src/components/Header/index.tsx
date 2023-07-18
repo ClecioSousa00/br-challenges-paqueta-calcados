@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 z-50 w-full border-b-2 border-secondary-2 border-opacity-50 bg-white">
+    <header>
       <BarHeader />
       <Container>
         <div className="flex items-center justify-between  pt-3">
@@ -21,7 +21,7 @@ export const Header = () => {
             />
           </Link>
           <div>
-            <div className="flex items-center gap-2 text-[#383838]">
+            <div className="flex items-center gap-2 text-secondary-2">
               <FavoritesIcon />
               <BagIcon />
               <UserIcon />

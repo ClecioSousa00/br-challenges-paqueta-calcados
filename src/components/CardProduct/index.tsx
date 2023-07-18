@@ -9,27 +9,6 @@ type CardProductProps = {
   data: Shoe
 }
 
-// const formattedValue = (value: number) => {
-//   const formattedValue = new Intl.NumberFormat('pt-BR', {
-//     style: 'currency',
-//     currency: 'BRL',
-//     minimumFractionDigits: 2,
-//   }).format(value)
-
-//   return formattedValue
-// }
-
-// const parcelValue = (value: number) => {
-//   const formattedValue = value / 10
-//   const newFormattedValue = formattedValue
-//     .toLocaleString('pt-BR', {
-//       minimumFractionDigits: 2,
-//       maximumFractionDigits: 2,
-//     })
-//     .replace('.', ',')
-//   return newFormattedValue
-// }
-
 export const CardProduct = ({ data }: CardProductProps) => {
   const valueFormattedProduct = formattedValue(data.price.value)
   const newParcelValue = parcelValue(data.price.value)

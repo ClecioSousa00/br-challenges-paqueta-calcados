@@ -10,10 +10,6 @@ import 'swiper/css/navigation'
 import 'swiper/css/a11y'
 import 'swiper/css/scrollbar'
 
-// type SliderProps = {
-//   children: ReactNode
-// }
-
 import { Shoe } from '@/types/shoesTypes'
 import { CardProduct } from '../../CardProduct'
 
@@ -48,20 +44,3 @@ export const Slider = ({ data }: SliderProps) => {
     </Swiper>
   )
 }
-// export const Slider = ({ children }: SliderProps) => {
-//   return (
-//     <Swiper
-//       modules={[Pagination, Navigation]}
-//       slidesPerView={4}
-//       spaceBetween={10}
-//       loop={true}
-//       pagination={{
-//         clickable: true,
-//       }}
-//       navigation={true}
-//       className="h-full"
-//     >
-//       {children}
-//     </Swiper>
-//   )
-// }

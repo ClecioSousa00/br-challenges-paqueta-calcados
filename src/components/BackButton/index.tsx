@@ -17,12 +17,3 @@ export const BackButton = ({ text = 'Paquetá', routeName = 'Sacola' }) => {
     </>
   )
 }
-/* <Link
-          className="mt-10 inline-block font-alt text-base text-secondary-2"
-          href={'/'}
-        >
-          Paquetá &gt;{' '}
-        </Link>
-        <span className="inline-block border-b-2 border-b-primary font-alt text-base text-secondary">
-          Sacola
-        </span> */

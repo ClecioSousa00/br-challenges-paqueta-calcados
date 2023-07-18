@@ -1,27 +1,6 @@
 import Link from 'next/link'
-// import { axiosInstance } from '@/services/api'
 import { useAxios } from '@/hooks/useAxios'
 import { Slider } from './Slider'
-
-// type Price = {
-//   value: number
-//   discount: number
-// }
-
-// type Shoe = {
-//   id: string
-//   name: string
-//   price: Price
-//   soldout: boolean
-//   image: string
-//   description: string
-// }
-
-// const getData = async (): Promise<Shoe[]> => {
-//   const response = await axiosInstance.get('')
-
-//   return response.data
-// }
 
 export const Highlights = async () => {
   const dataShoes = await useAxios('/shoes')
@@ -42,13 +21,6 @@ export const Highlights = async () => {
         </div>
         <Slider data={dataShoes} />
       </div>
-      {/* <Slider>
-        {dataShoes.map((shoes) => (
-          <SliderItem key={shoes.id}>
-            <CardProduct key={shoes.id} data={shoes} />
-          </SliderItem>
-        ))}
-      </Slider> */}
       <div className="mt-10 h-20"></div>
     </>
   )
