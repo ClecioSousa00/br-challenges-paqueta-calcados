@@ -3,7 +3,7 @@ import { Container } from '@/components/Container'
 import { ContainerProduct } from '@/components/PageProduct/ContainerProduct'
 import { ListProducts } from '@/components/PageProduct/ListProducts'
 import { Suspense } from 'react'
-import Loading from './loading'
+import LoadingProduct from '@/app/product/loading'
 // import { useAxios } from '@/hooks/useAxios'
 
 type ParamsProps = {
@@ -17,7 +17,7 @@ export default async function Product({ params }: ParamsProps) {
 
   return (
     <Container>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<LoadingProduct />}>
         <ContainerProduct id={params.productId} />
       </Suspense>
       <div className="mt-20 pb-10">
