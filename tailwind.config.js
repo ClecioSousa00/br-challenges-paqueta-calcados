@@ -28,6 +28,7 @@ module.exports = {
         'secondary-2': '#787878',
         dark: '#121212',
         success: '#65C239',
+        attention: '#EA4444',
       },
       boxShadow: {
         cardShadow: ' 0px 4px 21px 0px rgba(0, 0, 0, 0.10)',

@@ -52,7 +52,7 @@ export const ProductBag = ({
       </div>
       <button
         onClick={() => removeProductLocalStorage(data.id)}
-        className="flex items-center gap-2 px-2 py-2 text-secondary"
+        className="flex items-center gap-2 rounded px-2 py-2 text-secondary transition-all hover:bg-attention hover:text-white"
       >
         <LuTrash2 /> Remover
       </button>
